@@ -1,47 +1,20 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Método da Bisecção</title>
+    <title>Cálculo Numérico</title>
 </head>
+
 <body>
-    <h1>Método da Bisseção</h1>
-    <form>
-        <label for="funcao">Função f(x):</label>
-        <input type="text" id="funcao" value="" required>
-        <label for="pre">Precisão:</label>
-        <input type="number" id="pre" value="" step="any" required>
-
-        <button type="submit">Calcular</button>
-    </form>
-    <div id="resultado"></div>
+    <h1>Métodos Numéricos Computacionais</h1>
+    <a href="/bisseccao.html">
+        <button type="button">Método da Bisseção</button>
+    </a>
+    <a href="/gauss.html">
+        <button type="button">Método de Eliminação de Gauss</button>
+    </a>
 </body>
+
 </html>
-
-<script> 
-//Função
-function resolverFuncao(expressao, x) {
-    return Function('x', 'return ' + expressao)(x);
-}
-
-//Intervalo
-document.querySelector('form').addEventListener('submit', function(e) {
-    let min = -1000;
-    let max = 1000;
-    let intervalo = null;
-    let criterioDeParada = precisao;
-    let anterior = resolverFuncao(expressao, min);
-    //for para encontrar o intervalo
-    for (let x = min + criterioDeParada; x <= max; x += criterioDeParada) {
-        let atual = resolverFuncao(expressao, x);
-        if (anterior * atual < 0) {
-            intervalo = `[${(x-criterioDeParada).toFixed(4)}, ${x.toFixed(4)}]`;
-            break;
-        }
-        anterior = atual;
-    }
-
-})
-//Refinamento
-</script>

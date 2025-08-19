@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Método da Bisecção</title>
+</head>
+
+<body>
+    <h1>Método da Bisseção</h1>
+    <a href="/index.html">
+        <button type="button">Voltar</button>
+    </a>
+    <form>
+        <label for="funcao">Função f(x):</label>
+        <input type="text" id="funcao" value="" required>
+        <label for="pre">Precisão:</label>
+        <input type="number" id="pre" value="" step="any" required>
+
+        <button type="submit">Calcular</button>
+    </form>
+    <div id="resultado"></div>
+</body>
+
+</html>
+
+<script>
+    //Função
+    function resolverFuncao(expressao, x) {
+        return Function('x', 'return ' + expressao)(x);
+    }
+
+    //Intervalo
+    document.querySelector('form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const expressao = document.getElementById('funcao').value;
+        const precisao = parseFloat(document.getElementById('pre').value);
+        let min = -1000;
+        let max = 1000;
+        let intervalo = null;
+        let criterioDeParada = precisao;
+        let anterior = resolverFuncao(expressao, min);
+
+        //for para encontrar o intervalo
+        for (let x = min + criterioDeParada; x <= max; x += criterioDeParada) {
+            let atual = resolverFuncao(expressao, x);
+            if (anterior * atual < 0) {
+                intervalo = `[${x - criterioDeParada}, ${x}]`;
+                break;
+            }
+            anterior = atual;
+        }
+        document.getElementById('resultado').innerHTML = `Intervalo inicial encontrado: ${intervalo}`;
+    })
+
+
+
+
+    //Refinamento
+
+
+
+
+
+</script>
